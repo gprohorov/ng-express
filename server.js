@@ -4,6 +4,7 @@
 // npm i -S morgan
 // npm i -S body-parser
 // npm i -S mongoose
+// npm i -S cors
 import express from 'express';
 import items from './data/items.json';
 //import ItemRoute from'./routes/ItemRoute';
@@ -11,15 +12,25 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 
-const PORT = 3000;
+const PORT = 8081;
 const server = express();
 const buildUrl = (version, path) => `/api/${version}/${path}`;
 const ITEMS_BASE_URL = buildUrl('v1', 'items');
+const cors = require("cors");
+
+var corsOptions = {
+    origin: "http://localhost:8081"
+};
 
 server.use(morgan('tiny'));
 server.use(bodyParser.json());
-
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(cors(corsOptions))
 //server.use(ITEMS_BASE_URL, ItemRoute);
+
+server.get("/", (req, res) => {
+    res.json({ message: "Welcome to base Angular\Node  application." });
+});
 
 console.log("Hello")
 server.listen(PORT, () => {
