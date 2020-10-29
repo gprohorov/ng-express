@@ -12,8 +12,11 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 
+
+
 const PORT = 8081;
 const server = express();
+require("./route/item.route")(server);
 const buildUrl = (version, path) => `/api/${version}/${path}`;
 const ITEMS_BASE_URL = buildUrl('v1', 'items');
 const cors = require("cors");
@@ -28,9 +31,11 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(cors(corsOptions))
 //server.use(ITEMS_BASE_URL, ItemRoute);
 
+/*
 server.get("/", (req, res) => {
     res.json({ message: "Welcome to base Angular\Node  application." });
 });
+*/
 
 console.log("Hello")
 server.listen(PORT, () => {
