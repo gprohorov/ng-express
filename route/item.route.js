@@ -6,5 +6,10 @@ module.exports = server => {
     // Retrieve all Tutorials
     router.get("/", items.findAll);
 
-    server.use('/api/items', router);
+    router.post("/", items.create);
+
+
+
+
+    server.use('/api/v1/items', router);
 };
