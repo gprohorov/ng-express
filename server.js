@@ -12,7 +12,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 
-const PORT = 8081;
+const PORT = process.env.PORT || 8080;
 const server = express();
 const buildUrl = (version, path) => `/api/${version}/${path}`;
 const ITEMS_BASE_URL = buildUrl('v1', 'items');
@@ -28,11 +28,12 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(cors(corsOptions))
 //server.use(ITEMS_BASE_URL, ItemRoute);
 
-server.get("/", (req, res) => {
-    res.json({ message: "Welcome to base Angular\Node  application." });
+server.get("/welcome", (req, res) => {
+    res.json({ message: "Welcome to db branch  Angular\Node  application." });
 });
 
 console.log("Hello")
+require("./route/item.route")(server);
 server.listen(PORT, () => {
     //  console.log(buildUrl('v1', 'items'));
     console.log(`Server has been started on port ${PORT}`);
