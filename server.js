@@ -32,8 +32,9 @@ server.get("/welcome", (req, res) => {
     res.json({ message: "Welcome to db branch  Angular\Node  application." });
 });
 
-console.log("Hello")
+console.log("Hello");
 require("./route/item.route")(server);
+
 server.listen(PORT, () => {
     //  console.log(buildUrl('v1', 'items'));
     console.log(`Server has been started on port ${PORT}`);
@@ -53,3 +54,16 @@ db.mongoose
         console.log("Cannot connect to the database!", err);
         process.exit();
     });
+
+
+
+
+
+
+
+
+
+
+
+
+

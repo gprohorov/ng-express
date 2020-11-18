@@ -9,3 +9,21 @@ db.url = dbConfig.url;
 db.items = require("./item.model.js")(mongoose);
 
 module.exports = db;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,13 +23,13 @@ exports.create = (req, res) => {
         return;
     }
 
-    // Create a Tutorial
+    // Create a Item
     const item = new Item({
         name: req.body.name,
         description: req.body.description
     });
 
-    // Save Tutorial in the database
+    // Save Item in the database
     item.save(item)
         .then(data => {
             res.send(data);

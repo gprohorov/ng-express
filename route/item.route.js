@@ -8,8 +8,5 @@ module.exports = server => {
 
     router.post("/", items.create);
 
-
-
-
     server.use('/api/v1/items', router);
 };
